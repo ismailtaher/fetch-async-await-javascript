@@ -29,7 +29,7 @@ const myPromise = new Promise((resolve, reject) => {
   }
 });
 
-console.log(myPromise);
+/* console.log(myPromise);
 
 myPromise
   .then((value) => {
@@ -41,3 +41,18 @@ myPromise
   .catch((err) => {
     console.error(err);
   });
+ */
+
+const myNextPromise = new Promise((resolve, reject) => {
+  setTimeout(function () {
+    resolve("myNextPromise resolved!");
+  }, 3000);
+});
+
+myNextPromise.then((value) => {
+  console.log(value);
+});
+
+myPromise.then((value) => {
+  console.log(value);
+});
