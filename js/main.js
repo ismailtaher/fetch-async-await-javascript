@@ -20,7 +20,7 @@ firstfunction(parameters, function () {
 
 // 3 states: Pending, Fullfilled, Rejected
 
-const myPromise = new Promise((resolve, reject) => {
+/* const myPromise = new Promise((resolve, reject) => {
   const error = false;
   if (!error) {
     resolve("Yes! resolved the promise");
@@ -29,7 +29,7 @@ const myPromise = new Promise((resolve, reject) => {
   }
 });
 
-/* console.log(myPromise);
+console.log(myPromise);
 
 myPromise
   .then((value) => {
@@ -41,7 +41,7 @@ myPromise
   .catch((err) => {
     console.error(err);
   });
- */
+
 
 const myNextPromise = new Promise((resolve, reject) => {
   setTimeout(function () {
@@ -56,3 +56,10 @@ myNextPromise.then((value) => {
 myPromise.then((value) => {
   console.log(value);
 });
+ */
+
+const user = fetch("https://jsonplaceholder.typicode.com/users");
+
+// Pending
+
+console.log(user);
