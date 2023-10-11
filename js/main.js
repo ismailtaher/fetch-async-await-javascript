@@ -58,8 +58,22 @@ myPromise.then((value) => {
 });
  */
 
-const user = fetch("https://jsonplaceholder.typicode.com/users");
+/* const user = fetch("https://jsonplaceholder.typicode.com/users"); */
 
 // Pending
+
+/* console.log(user); */
+
+// Using Fetch Correctly using Thenables
+
+const user = fetch("https://jsonplaceholder.typicode.com/users")
+  .then((Response) => {
+    return Response.json();
+  })
+  .then((data) => {
+    data.forEach((user) => {
+      console.log(user);
+    });
+  });
 
 console.log(user);
