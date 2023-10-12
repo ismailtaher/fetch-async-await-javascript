@@ -66,7 +66,7 @@ myPromise.then((value) => {
 
 // Using Fetch Correctly using Thenables
 
-const user = fetch("https://jsonplaceholder.typicode.com/users")
+/* const user = fetch("https://jsonplaceholder.typicode.com/users")
   .then((Response) => {
     return Response.json();
   })
@@ -76,4 +76,25 @@ const user = fetch("https://jsonplaceholder.typicode.com/users")
     });
   });
 
-console.log(user);
+console.log(user); */
+
+// Async & Await
+
+const myUser = {
+  userList: [],
+};
+
+const myCoolFunction = async () => {
+  const Response = await fetch("https://jsonplaceholder.typicode.com/users");
+  const jsonUserData = await Response.json();
+  return jsonUserData;
+};
+
+const anotherFunc = async () => {
+  const data = await myCoolFunction();
+  myUser.userList = data;
+  console.log(myUser.userList);
+};
+
+anotherFunc();
+console.log(myUser.userList);
