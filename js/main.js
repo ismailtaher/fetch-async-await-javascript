@@ -80,7 +80,7 @@ console.log(user); */
 
 // Async & Await
 
-const myUser = {
+/* const myUser = {
   userList: [],
 };
 
@@ -98,3 +98,20 @@ const anotherFunc = async () => {
 
 anotherFunc();
 console.log(myUser.userList);
+ */
+// Workflow Function
+
+const getAllUserEmails = async () => {
+  const Response = await fetch("https://jsonplaceholder.typicode.com/users");
+  const jsonUserData = await Response.json();
+  const userEmailArray = jsonUserData.map((user) => {
+    return user.email;
+  });
+  postToWebPage(userEmailArray);
+};
+
+const postToWebPage = (data) => {
+  console.log(data);
+};
+
+getAllUserEmails();
