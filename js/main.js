@@ -129,7 +129,7 @@ const getDadJoke = async () => {
   });
   const jsonJokeData = await Response.json();
 
-  console.log(jsonJokeData.joke);
+  console.log(jsonJokeData);
 };
 
 getDadJoke();
