@@ -120,16 +120,22 @@ getAllUserEmails();
 
 // 2nd parameter of fetch() is an object
 
-const getDadJoke = async () => {
-  const Response = await fetch("https://icanhazdadjoke.com/", {
-    method: "GET",
-    headers: {
-      Accept: "application/json",
-    },
-  });
-  const jsonJokeData = await Response.json();
-
-  console.log(jsonJokeData);
+const jokeObj = {
+  id: "lqWgFlyPusc",
+  joke: "What do you call an Argentinian with a rubber toe? Roberto",
 };
 
-getDadJoke();
+const postData = async (jokeObj) => {
+  const Response = await fetch("https://httpbin.org/post", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(jokeObj),
+  });
+  const jsonResponse = await Response.json();
+
+  console.log(jsonResponse);
+};
+
+postData(jokeObj);
