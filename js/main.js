@@ -99,9 +99,10 @@ const anotherFunc = async () => {
 anotherFunc();
 console.log(myUser.userList);
  */
+
 // Workflow Function
 
-const getAllUserEmails = async () => {
+/* const getAllUserEmails = async () => {
   const Response = await fetch("https://jsonplaceholder.typicode.com/users");
   const jsonUserData = await Response.json();
   const userEmailArray = jsonUserData.map((user) => {
@@ -115,3 +116,20 @@ const postToWebPage = (data) => {
 };
 
 getAllUserEmails();
+ */
+
+// 2nd parameter of fetch() is an object
+
+const getDadJoke = async () => {
+  const Response = await fetch("https://icanhazdadjoke.com/", {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+    },
+  });
+  const jsonJokeData = await Response.json();
+
+  console.log(jsonJokeData.joke);
+};
+
+getDadJoke();
