@@ -120,7 +120,9 @@ getAllUserEmails();
 
 // 2nd parameter of fetch() is an object
 
-const jokeObj = {
+// Posting an Object
+
+/* const jokeObj = {
   id: "lqWgFlyPusc",
   joke: "What do you call an Argentinian with a rubber toe? Roberto",
 };
@@ -138,4 +140,20 @@ const postData = async (jokeObj) => {
   console.log(jsonResponse);
 };
 
-postData(jokeObj);
+postData(jokeObj); */
+
+// Sending Data through the URL in Fetch() using "GET" method
+
+const requestJoke = async (category) => {
+  const response = await fetch(
+    `http://api.chucknorris.io/jokes/random?category=${category}`
+  );
+
+  const jsonResponse = await response.json();
+
+  console.log(jsonResponse);
+};
+
+requestJoke("science");
+
+// The Categories are = ["animal","career","celebrity","dev","explicit","fashion","food","history","money","movie","music","political","religion","science","sport","travel"]
