@@ -144,16 +144,60 @@ postData(jokeObj); */
 
 // Sending Data through the URL in Fetch() using "GET" method
 
-const requestJoke = async (category) => {
+/* const requestJoke = async (category) => {
   const response = await fetch(
     `http://api.chucknorris.io/jokes/random?category=${category}`
   );
 
   const jsonResponse = await response.json();
 
-  console.log(jsonResponse);
+  console.log(jsonResponse.value);
 };
 
-requestJoke("science");
+requestJoke("science"); */
 
 // The Categories are = ["animal","career","celebrity","dev","explicit","fashion","food","history","money","movie","music","political","religion","science","sport","travel"]
+
+// If passing more than one parameter use & symbol to signify the next parameter e.g.
+// http://api.icndb.com/jokes/random?firstName=${firstName}&lastName=${lastName}*);
+
+// Abstract Into Functions
+
+// maybe from a form
+
+// Remeber the API does not work anymore so this code will show error
+
+const getDataFromForm = () => {
+  const requestObj = {
+    firstName: "Bruce",
+    lastName: "Lee",
+    category: ["nerdy"],
+  };
+  return requestObj;
+};
+
+const buildRequestUrl = (requestData) => {
+  return `http://api.icndb.com/jokes/random?firstName=${requestData.firstName}&lastName=${requestData.lastName}&limitTo=${requestData.category}`;
+};
+
+const requestJoke = async (url) => {
+  const response = await fetch(url);
+  const jsonResponse = await response.json();
+  const joke = jsonResponse.value.joke;
+  postJokeToPage(joke);
+};
+
+const postJokeToPage = (joke) => {
+  console.log(joke);
+};
+
+// Procedural "workflow" function
+
+const processJokeRequest = async () => {
+  const requestData = getDataFromForm();
+  const requestUrl = buildRequestUrl(requestData);
+  await requestJoke(requestUrl);
+  console.log("finished!");
+};
+
+processJokeRequest();
